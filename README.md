@@ -10,10 +10,10 @@ We propose a false discovery rate COntRol of object hALlucination (CORAL), a tra
 
 ### How to Use CORAL in LVLMs
 
-### Experiments
+## Experiments
 
 
-### Examples
+## Examples
 
 
-### Related Papers
+## Related Papers
