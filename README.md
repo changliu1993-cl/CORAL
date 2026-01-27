@@ -32,4 +32,7 @@ Table 3. Ablation study on the effect of FDR target level ($q$) on the performan
 ![](example.png)
 
 ## Related Papers
-This code is based on [VCD](https://github.com/DAMO-NLP-SG/VCD). 
+This code is based on:
+- **VCD**: [VCD](https://github.com/DAMO-NLP-SG/VCD)
+- **Data Splitting**: [DS](https://github.com/Jeremy690/DSfdr)
+- **Mirror Statistics**: [MS](https://doi.org/10.1080/01621459.2021.1923510)
