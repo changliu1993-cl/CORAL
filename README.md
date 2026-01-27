@@ -31,16 +31,22 @@ python3 eval_llava.py
 ```
 ### Structure
 ```bash
-CORAL/
-├── utils/
-├── layers/
-├── model/     
-├── main.py                
+coral/
+├── data_split/            # Visual uncertainty splitting strategies
+├── eval/                  # FDR, power, and evaluation utilities
+├── mirror_statistics.py   # Mirror statistic construction
+├── fdr_power_run.py       # FDR control and power computation
+├── __init__.py
+├── test.py                # Minimal sanity check
+└── requirement.txt
 experiments/
-├── data/
-├── graph/
-├── timeseries/
-├── test.py                      
+├── MARINE/                # MARINE baseline
+├── QWEN-VL/               # Qwen-VL backend
+├── VCD/                   # VCD baseline
+├── llava/                 # LLaVA backend
+├── lavis/                 # InstructBLIP / LAVIS-based models
+├── dataset/               # Dataset loaders and preprocessing
+└── eval/                  # POPE / CHAIR / MME evaluation scripts                 
 README.md                         
 ```
 
