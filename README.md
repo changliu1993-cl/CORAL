@@ -11,8 +11,24 @@ We propose a false discovery rate **CO**nt**R**ol of object h**AL**lucination (*
 ## Usage
 
 ### Environment Setup
+To install requirements:
+
+```setup
+pip install -r requirements.txt
+```
 
 ### How to Use CORAL in LVLMs
+To train the model(s) in the paper, run this command:
+
+```train
+python3 eval_llava.py
+  --model_id "liuhaotian/llava-v1.5-7b"
+  --aokvqa_json "/path/aokvqa_pope_random.json"
+  --aokvqa_img_dir "/path/"
+  --device "cuda:0"
+  --q 0.10
+  --out_dir "./debug"
+```
 
 ## Experiments
 We evaluate CORAL on object hallucination benchmarks, including POPE, CHAIR, and MME, demonstrating consistent improvements in hallucination suppression under controlled FDR. 
