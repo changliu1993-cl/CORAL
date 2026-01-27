@@ -16,8 +16,11 @@ We propose a false discovery rate **CO**nt**R**ol of object h**AL**lucination (*
 
 ## Experiments
 We evaluate CORAL on object hallucination benchmarks, including POPE, CHAIR, and MME, demonstrating consistent improvements in hallucination suppression under controlled FDR.
-
+Table 1. Result of FDR and Power
+![](fdr_power.png)
+Table 2. Result on POPE. 
+![](pope.png)
 ## Examples
-
+![](example.png)
 
 ## Related Papers
