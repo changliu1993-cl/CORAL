@@ -29,6 +29,20 @@ python3 eval_llava.py
   --q 0.10
   --out_dir "./debug"
 ```
+### Structure
+```bash
+CORAL/
+├── utils/
+├── layers/
+├── model/     
+├── main.py                
+experiments/
+├── data/
+├── graph/
+├── timeseries/
+├── test.py                      
+README.md                         
+```
 
 ## Experiments
 We evaluate CORAL on object hallucination benchmarks, including POPE, CHAIR, and MME, demonstrating consistent improvements in hallucination suppression under controlled FDR. 
