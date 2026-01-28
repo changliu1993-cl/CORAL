@@ -133,7 +133,7 @@ def plot_mirror_symmetry(deltas, save_prefix, bins=80):
     print(f"KS statistic = {ks.statistic:.4f}, p = {ks.pvalue:.4g}")
 
 def main():
-    path = "pope_random_llava_gm.json"  # <<< 改这里
+    path = "pope_random_llava_gm.json" 
     save_tag = "pope_random_llava"
 
     summary, records = load_summary_and_records(path)
