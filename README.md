@@ -62,6 +62,7 @@ Table 2. Evaluation with POPE score across multiple LVLM architectures on the MS
 ![](pope.png)
 
 Table 3. Ablation study on the effect of FDR target level ($q$) on the performance of LLaVA-v1.5, QWEN-VL, InstructBLIP using POPE metrics with $q = \{0.01, 0.03, 0.05, 0.1, 0.2\}$.
+![](q_ablation_plot_new.png)
 ![](q_ablation_plot.png)
 
 
