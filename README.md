@@ -4,9 +4,9 @@ We propose a false discovery rate **CO**nt**R**ol of object h**AL**lucination (*
 ## Overview
 ![](overview_v6.png)
 ## Key Ideas
-- CORAL uses **visual uncertainty splitting** strategy to construct two independent visual inputs from each image to induce controlled visual uncertainty. 
-- CORAL leverages the **mirror statistics** derived from the split visual inputs to quantify visual uncertainty by controlling the FDR and maximizing the power within an image.  
-- CORAL is a **training-free and API-free** method that mitigates object hallucination with a favorable trade-off between latency and accuracy, achieving low computational overhead compared to existing approaches. 
+- CORAL employs an **uncertainty-aware visual data splitting** strategy to construct two paired visual views via symmetric perturbations of each image, inducing controlled variability and enabling stochastic contrasts for object hallucination control.
+- CORAL leverages **mirror statistic** constructed from split visual inputs to estimate and control the false discovery rate at the image level, enabling principled suppression of hallucinated objects while retaining high power.  
+- CORAL is a **training-free** approach that mitigates object hallucination through data-splitting–based FDR control, incurring low computational overhead compared to training-based alternatives.
 
 ## Usage
 
