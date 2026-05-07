@@ -54,9 +54,11 @@ README.md
 We evaluate CORAL on object hallucination benchmarks, including POPE, CHAIR, and MME, demonstrating consistent improvements in hallucination suppression under controlled FDR. 
 
 Table 1. Evaluation of overall FDR control and overall power across multiple LVLM architectures on MSCOCO with 3000 replicates. **Bold** indicates the best result and <ins>underline</ins> indicates the second-best result in each column. 
+![](fdr_new.png)
 ![](fdr_power.png)
 
 Table 2. Evaluation with POPE score across multiple LVLM architectures on the MSCOCO dataset. We report individualized Accuracy and F1 score (mean $\pm$ standard deviation over 3000 runs). **Bold** indicates the best result and <ins>underline</ins> indicates the second-best result. 
+![](pope_new.png)
 ![](pope.png)
 
 Table 3. Ablation study on the effect of FDR target level ($q$) on the performance of LLaVA-v1.5, QWEN-VL, InstructBLIP using POPE metrics with $q = \{0.01, 0.03, 0.05, 0.1, 0.2\}$.
