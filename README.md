@@ -1,5 +1,5 @@
 # CORAL: Mitigating Object Hallucination in Large Vision-Language Models via False Discovery Controlled Visual Data Splitting
-We propose a false discovery rate **CO**nt**R**ol of object h**AL**lucination (**CORAL**), a training-free and API-free framework that models visual uncertainty using a data-splitting approach controlled by the false discovery rate.
+We propose a false discovery rate **CO**nt**R**ol of object h**AL**lucination (**CORAL**), a training-free framework that models visual uncertainty using a data-splitting approach controlled by the false discovery rate.
 
 ## Overview
 ![](overview_v6.png)
