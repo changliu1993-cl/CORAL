@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CORAL: Mitigating Object Hallucination in Large Vision-Language Models via False Discovery Controlled Visual Data Splitting. NeurIPS 2026." />
+  <meta name="theme-color" content="#fbf8fb" />
+  <title>CORAL · NeurIPS 2026</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+
+  <div class="background-glow glow-one" aria-hidden="true"></div>
+  <div class="background-glow glow-two" aria-hidden="true"></div>
+
+  <header class="nav-wrap">
+    <nav class="nav">
+
+      <a class="brand" href="#home">
+        <span class="brand-dot"></span>
+        <span>CORAL</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#examples">Examples</a>
+        <a href="#citation">Citation</a>
+      </div>
+
+      <a
+        class="github-button"
+        href="https://github.com/changliu1993-cl/CORAL"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub ↗
+      </a>
+
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section id="home" class="hero page-width">
+
+      <div class="hero-copy">
+
+        <p class="kicker hero-kicker">
+          FALSE DISCOVERY CONTROLLED HALLUCINATION MITIGATION
+        </p>
+
+        <h1 class="coral-title">CORAL</h1>
+
+        <h2>
+          Mitigating Object Hallucination in Large Vision-Language Models
+          via False Discovery Controlled Visual Data Splitting
+        </h2>
+
+        <p class="hero-description">
+          A principled, training-free framework for image-level hallucination
+          control using uncertainty-aware visual data splitting, mirror statistics,
+          and false discovery rate control.
+        </p>
+
+        <div class="acceptance">
+          <span>✦</span>
+          <strong>Accepted to NeurIPS 2026</strong>
+          <span>✦</span>
+        </div>
+
+        <div class="authors">
+          <span>Chang Liu</span>
+          <span>Yu Tian</span>
+          <span>Rui Xie<sup>*</sup></span>
+        </div>
+
+        <p class="affiliation">
+          University of Central Florida
+          &nbsp; · &nbsp;
+          <sup>*</sup>Corresponding author
+        </p>
+
+
+        <!-- Large icon buttons -->
+        <div class="hero-actions">
+
+          <!-- Paper: OpenReview -->
+          <a
+            class="hero-button paper-button"
+            href="https://openreview.net/forum?id=ek5KY0D3CL"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="CORAL paper on OpenReview"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 2.5h8l4 4V21.5H6z"></path>
+              <path d="M14 2.5v5h5"></path>
+              <path d="M9 12h6"></path>
+              <path d="M9 16h6"></path>
+            </svg>
+            <span>Paper</span>
+          </a>
+
+          <!-- arXiv: visually active, currently no public URL -->
+          <span class="hero-button arxiv-button disabled-button" aria-label="arXiv coming soon">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H11v18H7.5A3.5 3.5 0 0 0 4 23V5.5z"></path>
+              <path d="M20 5.5A3.5 3.5 0 0 0 16.5 2H13v18h3.5A3.5 3.5 0 0 1 20 23V5.5z"></path>
+            </svg>
+            <span>arXiv</span>
+          </span>
+
+          <!-- Code: GitHub mark -->
+          <a
+            class="hero-button code-button"
+            href="https://github.com/changliu1993-cl/CORAL"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="github-mark" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.02c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.28-5.27-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.16 1.18a10.9 10.9 0 0 1 5.76 0c2.19-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.42-2.71 5.39-5.29 5.68.42.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .7Z"></path>
+            </svg>
+            <span>Code</span>
+          </a>
+
+          <!-- Citation -->
+          <a class="hero-button citation-button" href="#citation">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 7h5v6H6c0 2.8-.8 4.8-3 6"></path>
+              <path d="M14 7h5v6h-4c0 2.8-.8 4.8-3 6"></path>
+            </svg>
+            <span>Citation</span>
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- OVERVIEW -->
+    <section id="overview" class="section page-width">
+
+      <div class="section-header">
+        <div>
+          <p class="kicker">OVERVIEW</p>
+          <h3>Controlling hallucinations at the image level</h3>
+        </div>
+
+        <p>
+          CORAL treats object hallucination as a false discovery control problem
+          rather than evaluating each object query independently.
+        </p>
+      </div>
+
+      <figure class="figure-card large-figure">
+        <img
+          src="https://raw.githubusercontent.com/changliu1993-cl/CORAL/main/overview_v6.png"
+          alt="Overview of the CORAL framework"
+        />
+        <figcaption>
+          CORAL builds paired mirror views from the same visual input,
+          computes mirror statistics from model responses, and applies a
+          data-driven threshold to control false discoveries.
+        </figcaption>
+      </figure>
+
+    </section>
+
+
+    <!-- METHOD -->
+    <section id="method" class="section page-width">
+
+      <div class="section-header">
+        <div>
+          <p class="kicker">METHOD</p>
+          <h3>Three components, one controlled decision rule</h3>
+        </div>
+
+        <p>
+          The framework combines uncertainty-aware visual data splitting,
+          mirror statistics, and false discovery rate control.
+        </p>
+      </div>
+
+
+      <div class="method-grid">
+
+        <article class="method-card">
+          <span class="method-number">01</span>
+
+          <h4>Uncertainty-Aware Visual Data Splitting</h4>
+
+          <p>
+            Two mirror views are generated from a shared Gaussian noise source
+            using opposite perturbation signs.
+          </p>
+
+          <div class="equation">
+            f<sup>+</sup><sub>v</sub> = v + τ<sub>v</sub>Z<sub>v</sub>
+            <br>
+            f<sup>−</sup><sub>v</sub> = v − τ<sub>v</sub>Z<sub>v</sub>
+          </div>
+        </article>
+
+
+        <article class="method-card">
+          <span class="method-number">02</span>
+
+          <h4>Mirror Statistic</h4>
+
+          <p>
+            The paired logit contrasts capture whether a generated token
+            responds consistently to the two symmetric perturbations.
+          </p>
+
+          <div class="equation">
+            Δ<sub>t</sub>
+            =
+            |Δ<sup>+</sup><sub>t</sub> + Δ<sup>−</sup><sub>t</sub>|
+            −
+            |Δ<sup>+</sup><sub>t</sub> − Δ<sup>−</sup><sub>t</sub>|
+          </div>
+        </article>
+
+
+        <article class="method-card">
+          <span class="method-number">03</span>
+
+          <h4>False Discovery Rate Control</h4>
+
+          <p>
+            The negative tail of the mirror statistic is used to estimate
+            spurious visual discoveries and select a data-driven threshold.
+          </p>
+
+          <div class="equation">
+            Target FDR level in experiments:
+            <strong>q = 0.10</strong>
+          </div>
+        </article>
+
+      </div>
+
+
+      <div class="feature-row">
+
+        <div class="feature">
+          <strong>Training-Free</strong>
+          <span>No retraining or additional supervision.</span>
+        </div>
+
+        <div class="feature">
+          <strong>Image-Level Control</strong>
+          <span>Controls the fraction of false discoveries within an image.</span>
+        </div>
+
+        <div class="feature">
+          <strong>High Power</strong>
+          <span>Preserves visually grounded objects while suppressing hallucinations.</span>
+        </div>
+
+        <div class="feature">
+          <strong>Model-Flexible</strong>
+          <span>Evaluated across multiple large vision-language models.</span>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- RESULTS -->
+    <section id="results" class="section page-width">
+
+      <div class="section-header">
+        <div>
+          <p class="kicker">RESULTS</p>
+          <h3>Controlled FDR with strong power</h3>
+        </div>
+
+        <p>
+          Main MSCOCO results for LLaVA-OneVision-7B,
+          Qwen2.5-VL-7B, and InternVL3-8B.
+        </p>
+      </div>
+
+
+      <div class="metrics">
+
+        <article>
+          <span>Random · Avg. FDR</span>
+          <strong>0.0736</strong>
+          <p>Below the target FDR level of 0.10.</p>
+        </article>
+
+        <article>
+          <span>Random · Avg. Power</span>
+          <strong>90.97%</strong>
+          <p>Retains most visually grounded objects.</p>
+        </article>
+
+        <article>
+          <span>POPE · Random Avg. F1</span>
+          <strong>92.96</strong>
+          <p>Average across the three main LVLMs.</p>
+        </article>
+
+        <article>
+          <span>MMBench · InternVL3-8B</span>
+          <strong>94.50</strong>
+          <p>Compared with 83.40 under regular decoding.</p>
+        </article>
+
+      </div>
+
+
+      <div class="two-column">
+
+        <figure class="figure-card">
+          <img
+            src="https://raw.githubusercontent.com/changliu1993-cl/CORAL/main/fdr_new.png"
+            alt="CORAL false discovery rate results"
+          />
+          <figcaption>
+            Overall false discovery rate across sampling settings.
+          </figcaption>
+        </figure>
+
+        <figure class="figure-card">
+          <img
+            src="https://raw.githubusercontent.com/changliu1993-cl/CORAL/main/fdr_power.png"
+            alt="CORAL power results"
+          />
+          <figcaption>
+            Overall power across sampling settings.
+          </figcaption>
+        </figure>
+
+      </div>
+
+
+      <div class="result-note">
+        <strong>Evaluation scope.</strong>
+        The paper evaluates CORAL with FDR and power together with POPE,
+        MME, CHAIR, and MMBench. Experiments cover MSCOCO, A-OKVQA,
+        and GQA, with aggregate evaluations reported over 3000 randomized trials.
+      </div>
+
+
+      <div class="two-column">
+
+        <figure class="figure-card">
+          <img
+            src="https://raw.githubusercontent.com/changliu1993-cl/CORAL/main/pope_new.png"
+            alt="CORAL POPE evaluation"
+          />
+          <figcaption>
+            POPE evaluation on MSCOCO.
+          </figcaption>
+        </figure>
+
+        <figure class="figure-card">
+          <img
+            src="https://raw.githubusercontent.com/changliu1993-cl/CORAL/main/q_ablation_plot_new.png"
+            alt="CORAL FDR target ablation"
+          />
+          <figcaption>
+            Effect of the target FDR level q on POPE performance.
+          </figcaption>
+        </figure>
+
+      </div>
+
+    </section>
+
+
+    <!-- EXAMPLES -->
+    <section id="examples" class="section page-width">
+
+      <div class="section-header">
+        <div>
+          <p class="kicker">QUALITATIVE EXAMPLES</p>
+          <h3>Suppressing unsupported visual content</h3>
+        </div>
+
+        <p>
+          Examples from the paper show how CORAL rejects hallucinated
+          predictions while preserving visually grounded information.
+        </p>
+      </div>
+
+
+      <figure class="figure-card large-figure">
+        <img
+          src="https://raw.githubusercontent.com/changliu1993-cl/CORAL/main/example.png"
+          alt="Qualitative examples of CORAL hallucination mitigation"
+        />
+        <figcaption>
+          Hallucination mitigation examples from CORAL.
+        </figcaption>
+      </figure>
+
+    </section>
+
+
+    <!-- SCOPE -->
+    <section class="section page-width">
+
+      <div class="section-header compact">
+        <div>
+          <p class="kicker">SCOPE</p>
+          <h3>What CORAL controls — and where it is limited</h3>
+        </div>
+      </div>
+
+
+      <div class="scope-grid">
+
+        <article>
+          <h4>Designed for grounded prediction control</h4>
+          <p>
+            CORAL operates on token-level model logits and uses mirror
+            statistics to distinguish stable visual evidence from
+            perturbation-driven noise before FDR-controlled selection.
+          </p>
+        </article>
+
+        <article>
+          <h4>Current limitation</h4>
+          <p>
+            CORAL cannot be directly applied to black-box commercial APIs
+            that do not expose token-level logits. The paper also identifies
+            relational, attribute, and open-ended generation settings as
+            directions for future work.
+          </p>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- CITATION -->
+    <section id="citation" class="section page-width citation-section">
+
+      <div class="section-header compact">
+        <div>
+          <p class="kicker">CITATION</p>
+          <h3>Cite CORAL</h3>
+        </div>
+      </div>
+
+
+      <div class="citation-box">
+
+<pre id="bibtex">@inproceedings{liu2026coral,
+  title     = {Mitigating Object Hallucination in Large Vision-Language Models via False Discovery Controlled Visual Data Splitting},
+  author    = {Liu, Chang and Tian, Yu and Xie, Rui},
+  booktitle = {40th Conference on Neural Information Processing Systems (NeurIPS)},
+  year      = {2026}
+}</pre>
+
+        <button id="copyButton" type="button">
+          Copy BibTeX
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer class="footer">
+
+    <div class="page-width footer-inner">
+
+      <div>
+        <strong>CORAL</strong>
+        <p>
+          False Discovery Rate Control of Object Hallucination in LVLMs
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <span>NeurIPS 2026</span>
+
+        <a
+          href="https://github.com/changliu1993-cl/CORAL"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub ↗
+        </a>
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+    const copyButton = document.getElementById("copyButton");
+
+    copyButton.addEventListener("click", async () => {
+
+      const bibtex = document.getElementById("bibtex").innerText;
+
+      try {
+
+        await navigator.clipboard.writeText(bibtex);
+
+        copyButton.textContent = "Copied ✓";
+
+        setTimeout(() => {
+          copyButton.textContent = "Copy BibTeX";
+        }, 1500);
+
+      } catch (error) {
+
+        copyButton.textContent = "Select & Copy";
+
+      }
+
+    });
+  </script>
+
+</body>
+</html>
